@@ -88,7 +88,7 @@ def crop_prediction(input_data):
 def predictcrop():
     try:
         if request.method == "POST":
-            form_values = request.form.to_dict()
+            form_values = request.json
             column_names = ["N", "P", "K", "temperature", "humidity", "ph", "rainfall"]
             input_data = np.asarray([float(form_values[i].strip()) for i in column_names]).reshape(
                 1, -1
@@ -102,4 +102,5 @@ def predictcrop():
 
 
 if __name__ == "__main__":
+
     app.run(debug=True)
