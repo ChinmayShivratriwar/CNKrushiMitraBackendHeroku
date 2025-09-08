@@ -84,6 +84,10 @@ def crop_prediction(input_data):
     prediction_data = set_digital_signature(prediction_data)
     return prediction_data
 
+@app.route("/")
+def index():
+    return {"status": "ok", "message": "Service running"}
+
 @app.route("/predict_crop", methods=["GET", "POST"])
 def predictcrop():
     try:
@@ -104,4 +108,5 @@ def predictcrop():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
